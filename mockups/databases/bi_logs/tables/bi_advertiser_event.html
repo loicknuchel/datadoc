@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>DataDoc</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="/datadoc/mockups/styles.css">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="/datadoc/mockups/home.html">DataDoc</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#pageNavbar"
+            aria-controls="pageNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="pageNavbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="/datadoc/mockups/home.html">Home</a></li>
+            <li class="nav-item active"><a class="nav-link" href="/datadoc/mockups/databases.html">Databases <span
+                    class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/datadoc/mockups/governance.html">Governance</a></li>
+            <li class="nav-item"><a class="nav-link" href="/datadoc/mockups/admin.html">Admin</a></li>
+        </ul>
+        <form method="GET" action="/datadoc/mockups/search.html" class="form-inline my-2 my-lg-0">
+            <input type="search" name="q" class="form-control mr-sm-2" placeholder="Search">
+            <button class="btn my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/datadoc/mockups/home.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="/datadoc/mockups/databases/bi_logs.html">bi_logs</a></li>
+            <li class="breadcrumb-item active" aria-current="page">bi_advertiser_event</li>
+        </ol>
+    </nav>
+
+    <h1>bi_logs.bi_advertiser_event table</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="table-description">This is a very usefull table...</div>
+            <div class="usage-advice">Préférer utiliser la table blabla qui est une aggrégation</div>
+        </div>
+        <div class="col-md-6">
+            <ul>
+                <li>Depends on: <a href="">glup.glup_advertiser_event</a></li>
+                <li>Is a dependency of: <a href="">bi_logs.bi_tutu</a>, <a href="">bi_logs.bi_tata</a></li>
+                <li>Job: <a href="http://review.criteois.com..."
+                            target="_blank">bi_logs.bi_advertiser_event.hive.conf</a> scheduled with <a
+                        href="">Cuttle</a></li>
+                <li>Infos: <span class="badge badge-light">1 day retention</span> <span class="badge badge-light">50 Go per day</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h3>Fields</h3>
+            <table class="table table-responsive">
+                <thead>
+                <tr>
+                    <th>name</th>
+                    <th>type</th>
+                    <th class="d-none d-md-table-cell">values</th>
+                    <th>description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>partnerclassid</td>
+                    <td><code>int</code></td>
+                    <td class="d-none d-md-table-cell">
+                        <div>
+                            <small class="text-muted float-right"><a href="">Edit</a></small>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <small class="text-muted float-right"><a href="">Edit</a></small>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="/datadoc/mockups/databases/bi_logs/tables/bi_advertiser_event/fields/useragent.html">useragent</a>
+                    </td>
+                    <td><code>string</code></td>
+                    <td class="d-none d-md-table-cell">
+                        <div>
+                            Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko)
+                            Version/10.1.2 Safari/603.3.8<br>NULL for inapp environment
+                        </div>
+                        <div>
+                            <small class="text-muted">Written by l.knuchel the december 9th</small>
+                            <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            Explicit user agent. This field is the source for all ua_X fields.<br>
+                            To understand what's behind a given user agent:
+                            https://developers.whatismybrowser.com/useragents/parse/<br>
+                            More details: User agent: how does it work?
+                        </div>
+                        <div>
+                            <small class="text-muted">Written by l.knuchel the december 9th</small>
+                            <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>partnerid</td>
+                    <td><code>int</code></td>
+                    <td class="d-none d-md-table-cell">
+                        <div>
+                            792, 1806 etc.<br>
+                            0 or -1: UNKNOWN partner
+                        </div>
+                        <div class="align-bottom">
+                            <small class="text-muted">Written by l.knuchel the december 9th</small>
+                            <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            AKA merchant_id<br>
+                            Identifier of the partner i.e. the website where the event happened.<br>
+                            Join with dim_partner.
+                        </div>
+                        <div>
+                            <small class="text-muted">Written by l.knuchel the december 9th</small>
+                            <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="/datadoc/mockups/databases/bi_logs/tables/bi_advertiser_event/fields/useragent.html">useragent</a>
+                    </td>
+                    <td><code>string</code></td>
+                    <td class="d-none d-md-table-cell">
+                        <div>
+                            Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko)
+                            Version/10.1.2 Safari/603.3.8<br>NULL for inapp environment
+                        </div>
+                        <small class="text-muted">Written by l.knuchel the december 9th</small>
+                        <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
+                    </td>
+                    <td>
+                        <div>
+                            Explicit user agent. This field is the source for all ua_X fields.<br>
+                            To understand what's behind a given user agent:
+                            https://developers.whatismybrowser.com/useragents/parse/<br>
+                            More details: User agent: how does it work?
+                        </div>
+                        <small class="text-muted">Written by l.knuchel the december 9th</small>
+                        <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="/datadoc/mockups/databases/bi_logs/tables/bi_advertiser_event/fields/useragent.html">useragent</a>
+                    </td>
+                    <td><code>string</code></td>
+                    <td class="d-none d-md-table-cell">
+                        <div>
+                            Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko)
+                            Version/10.1.2 Safari/603.3.8<br>NULL for inapp environment
+                        </div>
+                        <small class="text-muted">Written by l.knuchel the december 9th</small>
+                        <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
+                    </td>
+                    <td>
+                        <div>
+                            Explicit user agent. This field is the source for all ua_X fields.<br>
+                            To understand what's behind a given user agent:
+                            https://developers.whatismybrowser.com/useragents/parse/<br>
+                            More details: User agent: how does it work?
+                        </div>
+                        <small class="text-muted">Written by l.knuchel the december 9th</small>
+                        <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h3>Sample data</h3>
+            <pre>aaa;eee;rrr
+aaa;fff;ddd</pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h3>Sample queries</h3>
+            ...
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+</body>
+</html>

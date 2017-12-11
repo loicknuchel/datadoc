@@ -14,6 +14,8 @@ Pages to mockup :
         - doc on table (purpose, owner, job links (source code & Cuttle admin), child & parent dependencies (table or field level))
         - list fields with doc (name, type, values, technical, functional, usage, child & parent dependencies)
         - allow to edit field doc & see doc history
+    - /schemas/$schema/tables/$table/fields/$field
+        - cf https://confluence.criteois.com/display/~m.vernet/DataDoc+-+AX+Use+Cases
     - /governance
         - not documented fields
         - recently documented fields

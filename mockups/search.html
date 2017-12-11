@@ -9,7 +9,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" href="/datadoc/mockups/styles.css">
 </head>
 <body>
 <!-- Navbar -->
@@ -33,10 +32,9 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-8">
-            <form method="GET" action="/datadoc/mockups/search.html" class="form-row" style="margin-top: 200px; margin-bottom: 200px;">
+            <form class="form-row" style="margin-top: 50px; margin-bottom: 50px;">
                 <div class="col-10">
-                    <input type="search" class="form-control form-control-lg" name="q" placeholder="Search for hive data" autofocus>
-                    <small class="form-text text-muted">Search for database, table or field in hive</small>
+                    <input type="search" class="form-control form-control-lg" placeholder="Search for hive data">
                 </div>
                 <div class="col-2">
                     <button type="submit" class="btn btn-lg">Search</button>
@@ -46,27 +44,22 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-3">
-            <div class="card">
-                <div class="card-header">Database infos</div>
-                <div class="card-body">
-                    <ul>
-                        <li>50 databases</li>
-                        <li>400 tables</li>
-                        <li>3000 fields</li>
-                    </ul>
-                </div>
-            </div>
+            <h3>Databases</h3>
+            <ul>
+                <li><a href="/datadoc/mockups/databases/bi_logs.html">bi_logs</a></li>
+            </ul>
         </div>
         <div class="col-3">
-            <div class="card">
-                <div class="card-header">Documentation stats</div>
-                <div class="card-body">
-                    <ul>
-                        <li>250 comments</li>
-                        <li>40 modifications this month</li>
-                    </ul>
-                </div>
-            </div>
+            <h3>Tables</h3>
+            <ul>
+                <li><a href="/datadoc/mockups/databases/bi_logs/tables/bi_advertiser_event.html">bi_logs.bi_advertiser_event</a></li>
+            </ul>
+        </div>
+        <div class="col-3">
+            <h3>Fields</h3>
+            <ul>
+                <li><a href="/datadoc/mockups/databases/bi_logs/tables/bi_advertiser_event/fields/useragent.html">bi_logs.bi_advertiser_event.useragent</a></li>
+            </ul>
         </div>
     </div>
 </div>
