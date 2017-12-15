@@ -45,12 +45,12 @@
 
     <h1>bi_logs.bi_advertiser_event table</h1>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="table-description">This is a very usefull table...</div>
             <div class="usage-advice">Préférer utiliser la table blabla qui est une aggrégation</div>
         </div>
-        <div class="col-md-6">
-            <ul>
+        <div class="col-md-4">
+            <ul class="pull-right">
                 <li>Depends on: <a href="">glup.glup_advertiser_event</a></li>
                 <li>Is a dependency of: <a href="">bi_logs.bi_tutu</a>, <a href="">bi_logs.bi_tata</a></li>
                 <li>Job: <a href="http://review.criteois.com..."
@@ -67,28 +67,37 @@
             <table class="table table-responsive">
                 <thead>
                 <tr>
+                    <th></th>
                     <th>name</th>
                     <th>type</th>
                     <th class="d-none d-md-table-cell">values</th>
-                    <th>description</th>
+                    <th>Technical description</th>
+                    <th>User description</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr class="table-warning">
+                    <td>⚠</td>
                     <td>partnerclassid</td>
                     <td><code>int</code></td>
                     <td class="d-none d-md-table-cell">
                         <div>
-                            <small class="text-muted float-right"><a href="">Edit</a></small>
+                            <small class="text-muted"><a href="">Add the documentation here!</a></small>
                         </div>
                     </td>
                     <td>
                         <div>
-                            <small class="text-muted float-right"><a href="">Edit</a></small>
+                            <small class="text-muted">Nothing</small>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <small class="text-muted"><a href="">Add the documentation here!</a></small>
                         </div>
                     </td>
                 </tr>
                 <tr>
+                    <td></td>
                     <td><a href="/datadoc/mockups/databases/bi_logs/tables/bi_advertiser_event/fields/useragent.html">useragent</a>
                     </td>
                     <td><code>string</code></td>
@@ -100,6 +109,11 @@
                         <div>
                             <small class="text-muted">Written by l.knuchel the december 9th</small>
                             <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <small class="text-muted">Nothing</small>
                         </div>
                     </td>
                     <td>
@@ -116,6 +130,7 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>!</td>
                     <td>partnerid</td>
                     <td><code>int</code></td>
                     <td class="d-none d-md-table-cell">
@@ -126,6 +141,11 @@
                         <div class="align-bottom">
                             <small class="text-muted">Written by l.knuchel the december 9th</small>
                             <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <small class="text-muted">Nothing</small>
                         </div>
                     </td>
                     <td>
@@ -141,6 +161,7 @@
                     </td>
                 </tr>
                 <tr>
+                    <td></td>
                     <td><a href="/datadoc/mockups/databases/bi_logs/tables/bi_advertiser_event/fields/useragent.html">useragent</a>
                     </td>
                     <td><code>string</code></td>
@@ -154,6 +175,11 @@
                     </td>
                     <td>
                         <div>
+                            <small class="text-muted">Nothing</small>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
                             Explicit user agent. This field is the source for all ua_X fields.<br>
                             To understand what's behind a given user agent:
                             https://developers.whatismybrowser.com/useragents/parse/<br>
@@ -164,6 +190,7 @@
                     </td>
                 </tr>
                 <tr>
+                    <td></td>
                     <td><a href="/datadoc/mockups/databases/bi_logs/tables/bi_advertiser_event/fields/useragent.html">useragent</a>
                     </td>
                     <td><code>string</code></td>
@@ -172,8 +199,16 @@
                             Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko)
                             Version/10.1.2 Safari/603.3.8<br>NULL for inapp environment
                         </div>
-                        <small class="text-muted">Written by l.knuchel the december 9th</small>
+                            <small class="text-muted">Written by l.knuchel the december 9th</small>
                         <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
+                    </td>
+                    <td class="d-none d-md-table-cell">
+
+                        <div>
+                            Nothing
+                        </div>
+                        <small class="text-muted">Taken from Hive the december 9th</small>
+                        <small class="text-muted float-right"><a href="">History</a></small>
                     </td>
                     <td>
                         <div>
@@ -193,14 +228,87 @@
     <div class="row">
         <div class="col-12">
             <h3>Sample data</h3>
-            <pre>aaa;eee;rrr
-aaa;fff;ddd</pre>
+            <table class="table table-responsive table-striped">
+                <thead>
+                <tr>
+                    <th>partnerclassid</th>
+                    <th>useragent</th>
+                    <th>partnerid</th>
+                    <th>useragent</th>
+                    <th>useragent</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>partnerclassid</td>
+                        <td>useragent</td>
+                        <td>partnerid</td>
+                        <td>useragent</td>
+                        <td>useragent</td>
+                    </tr>
+                    <tr>
+                        <td>partnerclassid</td>
+                        <td>useragent</td>
+                        <td>partnerid</td>
+                        <td>useragent</td>
+                        <td>useragent</td>
+                    </tr>
+                    <tr>
+                        <td>partnerclassid</td>
+                        <td>useragent</td>
+                        <td>partnerid</td>
+                        <td>useragent</td>
+                        <td>useragent</td>
+                    </tr>
+                    <tr>
+                        <td>partnerclassid</td>
+                        <td>useragent</td>
+                        <td>partnerid</td>
+                        <td>useragent</td>
+                        <td>useragent</td>
+                    </tr>
+                    <tr>
+                        <td>partnerclassid</td>
+                        <td>useragent</td>
+                        <td>partnerid</td>
+                        <td>useragent</td>
+                        <td>useragent</td>
+                    </tr>
+                    <tr>
+                        <td>partnerclassid</td>
+                        <td>useragent</td>
+                        <td>partnerid</td>
+                        <td>useragent</td>
+                        <td>useragent</td>
+                    </tr>
+                    <tr>
+                        <td>partnerclassid</td>
+                        <td>useragent</td>
+                        <td>partnerid</td>
+                        <td>useragent</td>
+                        <td>useragent</td>
+                    </tr>
+                </tbody>
+
+
+            </table>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
             <h3>Sample queries</h3>
-            ...
+            <code>
+                select * from bi_logs.bi_advertiser_event
+            </code>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
     </div>
 </div>
