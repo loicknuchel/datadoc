@@ -1,0 +1,22 @@
+.doc-item:hover {
+    background-color: #F5F5F5;
+}
+
+.doc-item .doc-source {
+    color: #868e96;
+    white-space: nowrap;
+}
+
+.doc-item .doc-actions {
+    color: #868e96;
+    visibility: hidden;
+    float: right;
+}
+
+span.doc-item .doc-actions {
+    float: none;
+}
+
+.doc-item:hover .doc-actions {
+    visibility: visible;
+}

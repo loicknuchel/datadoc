@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href="/datadoc/mockups/assets/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/datadoc/mockups/styles.css">
 </head>
 <body>
@@ -27,7 +28,7 @@
             <li class="nav-item"><a class="nav-link" href="/datadoc/mockups/governance.html">Governance</a></li>
             <li class="nav-item"><a class="nav-link" href="/datadoc/mockups/admin.html">Admin</a></li>
         </ul>
-        <form method="GET" action="/datadoc/mockups/search.html" class="form-inline my-2 my-lg-0">
+        <form method="GET" action="/datadoc/mockups/search-results.html" class="form-inline my-2 my-lg-0">
             <input type="search" name="q" class="form-control mr-sm-2" placeholder="Search">
             <button class="btn my-2 my-sm-0" type="submit">Search</button>
         </form>
@@ -43,20 +44,65 @@
         </ol>
     </nav>
 
-    <h1>bi_logs.bi_advertiser_event table</h1>
     <div class="row">
-        <div class="col-md-8">
-            <div class="table-description">This is a very usefull table...</div>
-            <div class="usage-advice">Préférer utiliser la table blabla qui est une aggrégation</div>
+        <div class="col-md-12">
+            <h1 style="white-space: nowrap;">
+                bi_advertiser_event
+                <span class="oi oi-warning text-warning"
+                      aria-hidden="true"
+                      data-toggle="popover"
+                      title="Reported problem"
+                      data-content="This table has a bug for field <b>partnerclassid</b>, see <a href=''>BES-13427</a> for more details."
+                      data-html="true"></span>
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 doc-item" title="functional description">
+            This is the high level description of the table...<br>
+            You will found here what is the purpose of the table and some general informations.
+            <div>
+                <small class="doc-source">Edited by l.knuchel the december 9th</small>
+                <small class="doc-actions"><a href="">Edit</a> - <a href="">History</a></small>
+            </div>
         </div>
         <div class="col-md-4">
-            <ul class="pull-right">
-                <li>Depends on: <a href="">glup.glup_advertiser_event</a></li>
-                <li>Is a dependency of: <a href="">bi_logs.bi_tutu</a>, <a href="">bi_logs.bi_tata</a></li>
-                <li>Job: <a href="http://review.criteois.com..."
-                            target="_blank">bi_logs.bi_advertiser_event.hive.conf</a> scheduled with <a
-                        href="">Cuttle</a></li>
-                <li>Infos: <span class="badge badge-light">1 day retention</span> <span class="badge badge-light">50 Go per day</span>
+            <ul>
+                <li>
+                    Depends on:
+                    <span class="doc-item">
+                        <a href="">glup.glup_advertiser_event</a>
+                        <small class="doc-actions"><a href="">Edit</a> - <a href="">History</a></small>
+                    </span>
+                </li>
+                <li>
+                    Is a dependency of:
+                    <span class="doc-item">
+                        <a href="">bi_logs.bi_tutu</a>, <a href="">bi_logs.bi_tata</a>
+                        <small class="doc-actions"><a href="">Edit</a> - <a href="">History</a></small>
+                    </span>
+                </li>
+                <li>
+                    Job:
+                    <span class="doc-item">
+                        <a href="">bi_logs.bi_advertiser_event.hive.conf</a> scheduled with <a href="">Cuttle</a>
+                        <small class="doc-actions"><a href="">Edit</a> - <a href="">History</a></small>
+                    </span>
+                </li>
+                <li>
+                    Owner:
+                    <span class="doc-item">
+                        <a href="">l.knuchel</a> (<a href="">DRE Tools</a>)
+                        <small class="doc-actions"><a href="">Edit</a> - <a href="">History</a></small>
+                    </span>
+                </li>
+                <li>
+                    Infos:
+                    <span class="doc-item">
+                        <span class="badge badge-light">1 day retention</span>
+                        <span class="badge badge-light">50 Go per day</span>
+                        <small class="doc-actions"><a href="">Edit</a> - <a href="">History</a></small>
+                    </span>
                 </li>
             </ul>
         </div>
@@ -67,162 +113,116 @@
             <table class="table table-responsive">
                 <thead>
                 <tr>
-                    <th></th>
                     <th>name</th>
                     <th>type</th>
                     <th class="d-none d-md-table-cell">values</th>
+                    <th>Description</th>
                     <th>Technical description</th>
-                    <th>User description</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="table-warning">
-                    <td>⚠</td>
-                    <td>partnerclassid</td>
+                <tr>
+                    <td style="white-space: nowrap;">
+                        <a href="/datadoc/mockups/databases/bi_logs/tables/bi_advertiser_event/fields/useragent.html">partnerclassid</a>
+                        <span class="oi oi-warning text-warning"
+                              aria-hidden="true"
+                              data-toggle="popover"
+                              title="Reported problem"
+                              data-content="This field is no longer filled since december 10th, see <a href=''>BES-13427</a> for more details."
+                              data-html="true"></span>
+                    </td>
                     <td><code>int</code></td>
-                    <td class="d-none d-md-table-cell">
-                        <div>
-                            <small class="text-muted"><a href="">Add the documentation here!</a></small>
-                        </div>
+                    <td class="doc-item d-none d-md-table-cell">
+                        <small class="text-muted"><a href="">Add some documentation here!</a></small>
                     </td>
-                    <td>
-                        <div>
-                            <small class="text-muted">Nothing</small>
-                        </div>
+                    <td class="doc-item">
+                        <small class="text-muted"><a href="">Add some documentation here!</a></small>
                     </td>
-                    <td>
-                        <div>
-                            <small class="text-muted"><a href="">Add the documentation here!</a></small>
-                        </div>
+                    <td class="doc-item">
+                        <small class="text-muted"><a href="">Add some documentation here!</a></small>
                     </td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td><a href="/datadoc/mockups/databases/bi_logs/tables/bi_advertiser_event/fields/useragent.html">useragent</a>
+                    <td>
+                        <a href="/datadoc/mockups/databases/bi_logs/tables/bi_advertiser_event/fields/useragent.html">useragent</a>
                     </td>
                     <td><code>string</code></td>
-                    <td class="d-none d-md-table-cell">
+                    <td class="doc-item d-none d-md-table-cell">
+                        Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko)
+                        Version/10.1.2 Safari/603.3.8<br>NULL for inapp environment
                         <div>
-                            Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko)
-                            Version/10.1.2 Safari/603.3.8<br>NULL for inapp environment
-                        </div>
-                        <div>
-                            <small class="text-muted">Written by l.knuchel the december 9th</small>
-                            <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
+                            <small class="doc-source">Edited by l.knuchel the december 9th</small>
+                            <small class="doc-actions"><a href="">Edit</a> - <a href="">History</a></small>
                         </div>
                     </td>
-                    <td>
+                    <td class="doc-item">
+                        Explicit user agent. This field is the source for all ua_X fields.<br>
+                        To understand what's behind a given user agent:
+                        https://developers.whatismybrowser.com/useragents/parse/<br>
+                        More details: User agent: how does it work?
                         <div>
-                            <small class="text-muted">Nothing</small>
+                            <small class="doc-source">Edited by l.knuchel the december 9th</small>
+                            <small class="doc-actions"><a href="">Edit</a> - <a href="">History</a></small>
                         </div>
                     </td>
-                    <td>
-                        <div>
-                            Explicit user agent. This field is the source for all ua_X fields.<br>
-                            To understand what's behind a given user agent:
-                            https://developers.whatismybrowser.com/useragents/parse/<br>
-                            More details: User agent: how does it work?
-                        </div>
-                        <div>
-                            <small class="text-muted">Written by l.knuchel the december 9th</small>
-                            <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
-                        </div>
+                    <td class="doc-item">
+                        <small class="text-muted"><a href="">Add some documentation here!</a></small>
                     </td>
                 </tr>
                 <tr>
-                    <td>!</td>
-                    <td>partnerid</td>
+                    <td>
+                        <a href="/datadoc/mockups/databases/bi_logs/tables/bi_advertiser_event/fields/useragent.html">partnerid</a>
+                    </td>
                     <td><code>int</code></td>
-                    <td class="d-none d-md-table-cell">
+                    <td class="doc-item d-none d-md-table-cell">
+                        792, 1806 etc.<br>
+                        0 or -1: UNKNOWN partner
                         <div>
-                            792, 1806 etc.<br>
-                            0 or -1: UNKNOWN partner
-                        </div>
-                        <div class="align-bottom">
-                            <small class="text-muted">Written by l.knuchel the december 9th</small>
-                            <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
+                            <small class="doc-source">Edited by l.knuchel the december 9th</small>
+                            <small class="doc-actions"><a href="">Edit</a> - <a href="">History</a>
+                            </small>
                         </div>
                     </td>
-                    <td>
+                    <td class="doc-item">
+                        AKA merchant_id<br>
+                        Identifier of the partner i.e. the website where the event happened.<br>
+                        Join with dim_partner.
                         <div>
-                            <small class="text-muted">Nothing</small>
+                            <small class="doc-source">Edited by l.knuchel the december 9th</small>
+                            <small class="doc-actions"><a href="">Edit</a> - <a href="">History</a></small>
                         </div>
                     </td>
-                    <td>
+                    <td class="doc-item">
+                        Bla bla bla...
                         <div>
-                            AKA merchant_id<br>
-                            Identifier of the partner i.e. the website where the event happened.<br>
-                            Join with dim_partner.
+                            <small class="doc-source">Taken from Hive comments the december 9th</small>
+                            <small class="doc-actions"><a href="">History</a></small>
                         </div>
-                        <div>
-                            <small class="text-muted">Written by l.knuchel the december 9th</small>
-                            <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><a href="/datadoc/mockups/databases/bi_logs/tables/bi_advertiser_event/fields/useragent.html">useragent</a>
-                    </td>
-                    <td><code>string</code></td>
-                    <td class="d-none d-md-table-cell">
-                        <div>
-                            Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko)
-                            Version/10.1.2 Safari/603.3.8<br>NULL for inapp environment
-                        </div>
-                        <small class="text-muted">Written by l.knuchel the december 9th</small>
-                        <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
-                    </td>
-                    <td>
-                        <div>
-                            <small class="text-muted">Nothing</small>
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            Explicit user agent. This field is the source for all ua_X fields.<br>
-                            To understand what's behind a given user agent:
-                            https://developers.whatismybrowser.com/useragents/parse/<br>
-                            More details: User agent: how does it work?
-                        </div>
-                        <small class="text-muted">Written by l.knuchel the december 9th</small>
-                        <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><a href="/datadoc/mockups/databases/bi_logs/tables/bi_advertiser_event/fields/useragent.html">useragent</a>
-                    </td>
-                    <td><code>string</code></td>
-                    <td class="d-none d-md-table-cell">
-                        <div>
-                            Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko)
-                            Version/10.1.2 Safari/603.3.8<br>NULL for inapp environment
-                        </div>
-                            <small class="text-muted">Written by l.knuchel the december 9th</small>
-                        <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
-                    </td>
-                    <td class="d-none d-md-table-cell">
-
-                        <div>
-                            Nothing
-                        </div>
-                        <small class="text-muted">Taken from Hive the december 9th</small>
-                        <small class="text-muted float-right"><a href="">History</a></small>
-                    </td>
-                    <td>
-                        <div>
-                            Explicit user agent. This field is the source for all ua_X fields.<br>
-                            To understand what's behind a given user agent:
-                            https://developers.whatismybrowser.com/useragents/parse/<br>
-                            More details: User agent: how does it work?
-                        </div>
-                        <small class="text-muted">Written by l.knuchel the december 9th</small>
-                        <small class="text-muted float-right"><a href="">Edit</a> - <a href="">History</a></small>
                     </td>
                 </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h3>Table usage</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 doc-item">
+            <h4>How to use</h4>
+            You should use this table like this and for theses use cases... bla bla bla...
+            <h4>Sample queries</h4>
+            <code>
+                select * from bi_logs.bi_advertiser_event
+            </code>
+            <h4>Common mistakes</h4>
+            Don't forgot to use some partition when you select from this table...
+            <div>
+                <small class="doc-source">Edited by l.knuchel the december 9th</small>
+                <small class="doc-actions"><a href="">Edit</a> - <a href="">History</a></small>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -239,76 +239,57 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>partnerclassid</td>
-                        <td>useragent</td>
-                        <td>partnerid</td>
-                        <td>useragent</td>
-                        <td>useragent</td>
-                    </tr>
-                    <tr>
-                        <td>partnerclassid</td>
-                        <td>useragent</td>
-                        <td>partnerid</td>
-                        <td>useragent</td>
-                        <td>useragent</td>
-                    </tr>
-                    <tr>
-                        <td>partnerclassid</td>
-                        <td>useragent</td>
-                        <td>partnerid</td>
-                        <td>useragent</td>
-                        <td>useragent</td>
-                    </tr>
-                    <tr>
-                        <td>partnerclassid</td>
-                        <td>useragent</td>
-                        <td>partnerid</td>
-                        <td>useragent</td>
-                        <td>useragent</td>
-                    </tr>
-                    <tr>
-                        <td>partnerclassid</td>
-                        <td>useragent</td>
-                        <td>partnerid</td>
-                        <td>useragent</td>
-                        <td>useragent</td>
-                    </tr>
-                    <tr>
-                        <td>partnerclassid</td>
-                        <td>useragent</td>
-                        <td>partnerid</td>
-                        <td>useragent</td>
-                        <td>useragent</td>
-                    </tr>
-                    <tr>
-                        <td>partnerclassid</td>
-                        <td>useragent</td>
-                        <td>partnerid</td>
-                        <td>useragent</td>
-                        <td>useragent</td>
-                    </tr>
+                <tr>
+                    <td>partnerclassid</td>
+                    <td>useragent</td>
+                    <td>partnerid</td>
+                    <td>useragent</td>
+                    <td>useragent</td>
+                </tr>
+                <tr>
+                    <td>partnerclassid</td>
+                    <td>useragent</td>
+                    <td>partnerid</td>
+                    <td>useragent</td>
+                    <td>useragent</td>
+                </tr>
+                <tr>
+                    <td>partnerclassid</td>
+                    <td>useragent</td>
+                    <td>partnerid</td>
+                    <td>useragent</td>
+                    <td>useragent</td>
+                </tr>
+                <tr>
+                    <td>partnerclassid</td>
+                    <td>useragent</td>
+                    <td>partnerid</td>
+                    <td>useragent</td>
+                    <td>useragent</td>
+                </tr>
+                <tr>
+                    <td>partnerclassid</td>
+                    <td>useragent</td>
+                    <td>partnerid</td>
+                    <td>useragent</td>
+                    <td>useragent</td>
+                </tr>
+                <tr>
+                    <td>partnerclassid</td>
+                    <td>useragent</td>
+                    <td>partnerid</td>
+                    <td>useragent</td>
+                    <td>useragent</td>
+                </tr>
+                <tr>
+                    <td>partnerclassid</td>
+                    <td>useragent</td>
+                    <td>partnerid</td>
+                    <td>useragent</td>
+                    <td>useragent</td>
+                </tr>
                 </tbody>
-
-
             </table>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <h3>Sample queries</h3>
-            <code>
-                select * from bi_logs.bi_advertiser_event
-            </code>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
         </div>
     </div>
 </div>
@@ -324,5 +305,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
         integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
+<script>
+    $(function () {
+        $('[data-toggle="popover"]').popover({trigger: 'hover click'})
+    });
+</script>
 </body>
 </html>

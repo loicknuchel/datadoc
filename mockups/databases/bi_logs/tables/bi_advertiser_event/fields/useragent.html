@@ -9,6 +9,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href="/datadoc/mockups/assets/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/datadoc/mockups/styles.css">
 </head>
 <body>
 <!-- Navbar -->
@@ -26,7 +28,7 @@
             <li class="nav-item"><a class="nav-link" href="/datadoc/mockups/governance.html">Governance</a></li>
             <li class="nav-item"><a class="nav-link" href="/datadoc/mockups/admin.html">Admin</a></li>
         </ul>
-        <form method="GET" action="/datadoc/mockups/search.html" class="form-inline my-2 my-lg-0">
+        <form method="GET" action="/datadoc/mockups/search-results.html" class="form-inline my-2 my-lg-0">
             <input type="search" name="q" class="form-control mr-sm-2" placeholder="Search">
             <button class="btn my-2 my-sm-0" type="submit">Search</button>
         </form>
@@ -43,7 +45,85 @@
         </ol>
     </nav>
 
-    <h1>bi_logs.bi_advertiser_event.useragent field</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 style="white-space: nowrap;">
+                useragent <code>string</code>
+            </h1>
+            <div class="alert alert-warning" role="alert">
+                This field is no longer filled since december 10th, see <a href=''>BES-13427</a> for more details.
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="doc-item" title="functional description">
+                Explicit user agent. This field is the source for all ua_X fields.<br>
+                To understand what's behind a given user agent:
+                https://developers.whatismybrowser.com/useragents/parse/<br>
+                More details: User agent: how does it work?
+                <div>
+                    <small class="doc-source">Edited by l.knuchel the december 9th</small>
+                    <small class="doc-actions"><a href="">Edit</a> - <a href="">History</a></small>
+                </div>
+            </div>
+            <div class="doc-item" title="technical description">
+                Field taken from ua_device table...
+                <div>
+                    <small class="doc-source">Edited by l.knuchel the december 9th</small>
+                    <small class="doc-actions"><a href="">Edit</a> - <a href="">History</a></small>
+                </div>
+            </div>
+            <div class="doc-item" title="possible values">
+                Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/603.3.8 (KHTML, like Gecko)
+                Version/10.1.2 Safari/603.3.8<br>NULL for inapp environment
+                <div>
+                    <small class="doc-source">Edited by l.knuchel the december 9th</small>
+                    <small class="doc-actions"><a href="">Edit</a> - <a href="">History</a></small>
+                </div>
+            </div>
+            <h3>Field usage</h3>
+            <div class="doc-item">
+                <h4>How to use</h4>
+                You should use this table like this and for theses use cases... bla bla bla...
+                <h4>Sample queries</h4>
+                <code>
+                    select * from bi_logs.bi_advertiser_event
+                </code>
+                <h4>Common mistakes</h4>
+                Don't forgot to use some partition when you select from this table...
+                <div>
+                    <small class="doc-source">Edited by l.knuchel the december 9th</small>
+                    <small class="doc-actions"><a href="">Edit</a> - <a href="">History</a></small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <ul>
+                <li>
+                    This field is copied from
+                    <span class="doc-item">
+                        <a href="">bi_lta.ua_device.useragent</a>
+                        <small class="doc-actions"><a href="">Edit</a> - <a href="">History</a></small>
+                    </span>
+                </li>
+                <li>
+                    This field comes from <a href="">glup.clicks.useragent</a>
+                </li>
+                <li>
+                    Other tables having this field :
+                    <span class="doc-item">
+                        <ul>
+                            <li><a href="">glup.clicks</a></li>
+                            <li><a href="">bi_lta.ua_device</a></li>
+                        </ul>
+                        <small class="doc-actions"><a href="">Edit</a> - <a href="">History</a></small>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 <!-- Optional JavaScript -->
