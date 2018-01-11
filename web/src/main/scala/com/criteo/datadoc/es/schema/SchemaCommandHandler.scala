@@ -2,29 +2,28 @@ package com.criteo.datadoc.es.schema
 
 import com.criteo.datadoc.es.{CommandHandler, EventHandler}
 
-class SchemaCommandHandler(handlers: Seq[EventHandler[SchemaEvent]]) extends CommandHandler[SchemaCommand, SchemaEvent] {
+class SchemaCommandHandler(initEvents: Seq[SchemaEvent], handlers: Seq[EventHandler[SchemaEvent]]) extends CommandHandler[SchemaCommand, SchemaEvent] {
   type Error = String
-  type SchemaState = Unit
-  private val initialState: SchemaState = ()
-  private var state: SchemaState = initialState
-
-  SchemaEventRepository.readEvents()
-    .map(events => handlers.foreach(_.init(events)))
+  type State = Unit
+  private val initState: State = ()
+  private var state: State = initEvents.foldLeft(initState)(evolve)
 
   def handle(c: SchemaCommand): Unit = {
     decide(state, c) match {
       case Left(errors) => println(s"Errors on $c and $state: $errors")
       case Right(events) =>
+        state = events.foldLeft(state)(evolve)
         handlers.foreach(_.handle(events))
     }
   }
 
-  private def decide(s: SchemaState, c: SchemaCommand): Either[Seq[Error], Seq[SchemaEvent]] = c match {
-    case UpdateSchema(databases) => Right(Seq())
+  private def decide(s: State, c: SchemaCommand): Either[Seq[Error], Seq[SchemaEvent]] = c match {
+    case UpdateSchema(databases) => Right(Seq()) // TODO: generate diff events
     case _ => Right(Seq())
   }
 
-  private def evolve(s: SchemaState, e: SchemaEvent): SchemaState = e match {
+  private def evolve(s: State, e: SchemaEvent): State = e match {
+    // TODO: apply event to state
     case _ => s
   }
 }

@@ -1,12 +1,16 @@
 package com.criteo.datadoc.web
 
-import com.criteo.datadoc.es.schema.{SchemaCommandHandler, SchemaRead, SchemaEventRepository}
+import com.criteo.datadoc.es.schema.{SchemaCommandHandler, SchemaEvent, SchemaEventRepository, SchemaRead}
+
+import scala.concurrent.Await
+import scala.concurrent.duration.Duration
 
 class Main {
   def main(args: Array[String]): Unit = {
-    val schemaRead = new SchemaRead()
-    val schemaWrite = new SchemaEventRepository()
-    val schemaCommandHandler = new SchemaCommandHandler(Seq(schemaWrite, schemaRead))
+    val events: Seq[SchemaEvent] = Await.result(SchemaEventRepository.readEvents(), Duration.Inf)
+    val schemaRead = new SchemaRead(events)
+    val schemaWrite = new SchemaEventRepository(events)
+    val schemaCommandHandler = new SchemaCommandHandler(events, Seq(schemaWrite, schemaRead))
 
   }
 }
