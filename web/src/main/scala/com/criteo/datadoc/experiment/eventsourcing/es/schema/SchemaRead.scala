@@ -1,7 +1,7 @@
-package com.criteo.datadoc.es.schema
+package com.criteo.datadoc.experiment.eventsourcing.es.schema
 
-import com.criteo.datadoc.domain.schema._
-import com.criteo.datadoc.es.EventHandler
+import com.criteo.datadoc.experiment.eventsourcing.domain.schema._
+import com.criteo.datadoc.experiment.eventsourcing.es.EventHandler
 
 class SchemaRead(initEvents: Seq[SchemaEvent]) extends EventHandler[SchemaEvent] {
   type State = Map[DatabaseName, Map[TableName, Seq[Column]]]

@@ -1,9 +1,9 @@
-package com.criteo.datadoc.domain.documentation
+package com.criteo.datadoc.experiment.eventsourcing.domain.documentation
 
 import java.util.Date
 
-import com.criteo.datadoc.domain.UserId
-import com.criteo.datadoc.domain.schema.{ColumnName, DatabaseName, TableName}
+import com.criteo.datadoc.experiment.eventsourcing.domain.UserId
+import com.criteo.datadoc.experiment.eventsourcing.domain.schema.{ColumnName, DatabaseName, TableName}
 
 case class DocId(value: String)
 

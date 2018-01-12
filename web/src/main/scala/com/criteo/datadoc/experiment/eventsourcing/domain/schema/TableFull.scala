@@ -1,4 +1,4 @@
-package com.criteo.datadoc.domain.schema
+package com.criteo.datadoc.experiment.eventsourcing.domain.schema
 
 case class TableFull(db: DatabaseName,
                      table: TableName,

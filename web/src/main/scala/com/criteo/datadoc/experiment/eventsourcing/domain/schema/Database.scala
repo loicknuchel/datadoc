@@ -1,4 +1,4 @@
-package com.criteo.datadoc.domain.schema
+package com.criteo.datadoc.experiment.eventsourcing.domain.schema
 
 case class Database(name: DatabaseName,
                     tables: Seq[Table]) {
@@ -8,7 +8,7 @@ case class Database(name: DatabaseName,
 
 object Database {
 
-  import com.criteo.datadoc.domain.documentation.DocItem._
+  import com.criteo.datadoc.experiment.eventsourcing.domain.documentation.DocItem._
 
   val documentationFields: Seq[Kind] = Seq(Owner, Description)
 

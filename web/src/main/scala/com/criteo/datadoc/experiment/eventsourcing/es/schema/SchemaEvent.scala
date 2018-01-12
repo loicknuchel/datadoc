@@ -1,6 +1,6 @@
-package com.criteo.datadoc.es.schema
+package com.criteo.datadoc.experiment.eventsourcing.es.schema
 
-import com.criteo.datadoc.domain.schema.{Column, ColumnName, DatabaseName, TableName}
+import com.criteo.datadoc.experiment.eventsourcing.domain.schema.{Column, ColumnName, DatabaseName, TableName}
 
 sealed trait SchemaEvent // all events related to schema aggregate
 case class TableCreated(db: DatabaseName, table: TableName, columns: Seq[Column]) extends SchemaEvent // when a new table is created

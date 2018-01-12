@@ -1,4 +1,4 @@
-package com.criteo.datadoc.domain
+package com.criteo.datadoc.experiment.eventsourcing.domain
 
 case class UserId(value: String)
 

@@ -1,11 +1,11 @@
-package com.criteo.datadoc.domain.schema
+package com.criteo.datadoc.experiment.eventsourcing.domain.schema
 
 case class Column(name: ColumnName,
                   typ: ColumnType)
 
 object Column {
 
-  import com.criteo.datadoc.domain.documentation.DocItem._
+  import com.criteo.datadoc.experiment.eventsourcing.domain.documentation.DocItem._
 
   val documentationFields: Seq[Kind] = Seq(Owner, Description, Usage, Values)
 }

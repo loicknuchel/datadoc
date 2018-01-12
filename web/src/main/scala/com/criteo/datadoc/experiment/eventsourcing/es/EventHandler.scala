@@ -1,4 +1,4 @@
-package com.criteo.datadoc.es
+package com.criteo.datadoc.experiment.eventsourcing.es
 
 trait EventHandler[E] {
   def handle(event: E): Unit

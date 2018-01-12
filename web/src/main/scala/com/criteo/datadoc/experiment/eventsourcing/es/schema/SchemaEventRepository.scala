@@ -1,6 +1,6 @@
-package com.criteo.datadoc.es.schema
+package com.criteo.datadoc.experiment.eventsourcing.es.schema
 
-import com.criteo.datadoc.es.EventHandler
+import com.criteo.datadoc.experiment.eventsourcing.es.EventHandler
 
 import scala.concurrent.Future
 

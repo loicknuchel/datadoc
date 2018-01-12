@@ -1,6 +1,6 @@
-package com.criteo.datadoc.web
+package com.criteo.datadoc.experiment.eventsourcing.web
 
-import com.criteo.datadoc.es.schema.{SchemaCommandHandler, SchemaEvent, SchemaEventRepository, SchemaRead}
+import com.criteo.datadoc.experiment.eventsourcing.es.schema.{SchemaCommandHandler, SchemaEvent, SchemaEventRepository, SchemaRead}
 
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration

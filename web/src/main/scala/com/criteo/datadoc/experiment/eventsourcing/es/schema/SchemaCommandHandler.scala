@@ -1,6 +1,6 @@
-package com.criteo.datadoc.es.schema
+package com.criteo.datadoc.experiment.eventsourcing.es.schema
 
-import com.criteo.datadoc.es.{CommandHandler, EventHandler}
+import com.criteo.datadoc.experiment.eventsourcing.es.{CommandHandler, EventHandler}
 
 class SchemaCommandHandler(initEvents: Seq[SchemaEvent], handlers: Seq[EventHandler[SchemaEvent]]) extends CommandHandler[SchemaCommand, SchemaEvent] {
   type Error = String
