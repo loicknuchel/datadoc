@@ -4,4 +4,5 @@
 /web/project/project/
 /web/src/main/scala/com/criteo/datadoc/experiment/gregyoung/
 /web/src/main/scala/com/criteo/datadoc/experiment/uno/
+/web/src/main/scala/com/criteo/datadoc/experiment/test.sc
 *.iml
