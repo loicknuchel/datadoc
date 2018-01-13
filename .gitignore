@@ -2,4 +2,6 @@
 /web/target/
 /web/project/target/
 /web/project/project/
+/web/src/main/scala/com/criteo/datadoc/experiment/gregyoung/
+/web/src/main/scala/com/criteo/datadoc/experiment/uno/
 *.iml

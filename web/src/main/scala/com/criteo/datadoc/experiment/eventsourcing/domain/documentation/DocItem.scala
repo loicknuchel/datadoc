@@ -22,10 +22,12 @@ object DocItem {
   case class ColumnTarget(db: DatabaseName, table: TableName, column: ColumnName) extends Target // a field
 
   sealed trait Kind // the kind of documentations
-  case object Owner extends Kind // who is responsible of the target
   case object Description extends Kind // functional description of the target
+  case object Owner extends Kind // who is responsible of the target
+  case object Depends extends Kind // parent dependency of the target
   case object Usage extends Kind // exemple on how to use the target
   case object Values extends Kind // possibles values of the target
+  case object Technical extends Kind // technical documentation of the target
 
   sealed trait Source // where the documentation comes from
   case class UserSource(id: UserId) extends Source // filled by user in UI
