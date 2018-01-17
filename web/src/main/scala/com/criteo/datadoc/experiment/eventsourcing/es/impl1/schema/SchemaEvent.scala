@@ -1,4 +1,4 @@
-package com.criteo.datadoc.experiment.eventsourcing.es.schema
+package com.criteo.datadoc.experiment.eventsourcing.es.impl1.schema
 
 import com.criteo.datadoc.experiment.eventsourcing.domain.schema.{Column, ColumnName, DatabaseName, TableName}
 import com.criteo.datadoc.experiment.eventsourcing.es.common.Event

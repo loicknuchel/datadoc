@@ -1,15 +1,23 @@
-package com.criteo.datadoc.experiment.eventsourcing.es.schema
+package com.criteo.datadoc.experiment.eventsourcing.es.impl1.schema
 
 import com.criteo.datadoc.experiment.eventsourcing.domain.schema.{Column, DatabaseName, Table, TableName}
 import com.criteo.datadoc.experiment.eventsourcing.es.common.{CommandError, CommandHandler, EventFull, EventHandler}
-import com.criteo.datadoc.experiment.eventsourcing.es.schema.SchemaCommandHandler._
 import com.criteo.datadoc.experiment.eventsourcing.helpers.SeqHelpers
 
 case class State(schema: Map[(DatabaseName, TableName), Table])
 
-class SchemaCommandHandler(initEvents: Seq[EventFull[SchemaEvent]], protected val handlers: Seq[EventHandler[SchemaEvent]]) extends CommandHandler[State, SchemaCommand, SchemaEvent] {
+/**
+  * This CommandHandler handle commands for schema for the whole hive schema.
+  * So there is only one schema command handler
+  */
+class SchemaCommandHandler(protected val initEvents: Seq[EventFull[SchemaEvent]],
+                           protected val handlers: Seq[EventHandler[SchemaEvent]]
+                          ) extends CommandHandler[State, SchemaCommand, SchemaEvent] {
+
+  import SchemaCommandHandler._
+
   private val initState: State = State(Map())
-  protected var state: State = initEvents.map(_.e).foldLeft(initState)(evolve)
+  override protected var state: State = initEvents.map(_.e).foldLeft(initState)(evolve)
 
   override protected def decide(s: State, c: SchemaCommand): Either[Seq[CommandError], Seq[SchemaEvent]] = c match {
     case UpdateSchema(tables) => Right(tableDiff(state.schema.values.toSeq, tables))
@@ -17,21 +25,21 @@ class SchemaCommandHandler(initEvents: Seq[EventFull[SchemaEvent]], protected va
 
   override protected def evolve(s: State, e: SchemaEvent): State = e match {
     case TableCreated(db, table, columns) =>
-      State(schema = s.schema + ((db, table) -> Table(db, table, columns)))
+      s.copy(schema = s.schema + ((db, table) -> Table(db, table, columns)))
     case TableDeleted(db, table) =>
-      State(schema = s.schema - (db -> table))
+      s.copy(schema = s.schema - (db -> table))
     case ColumnCreated(db, table, column) =>
       val t = s.schema(db -> table)
       val u = t.copy(columns = column +: t.columns)
-      State(schema = s.schema + ((db, table) -> u))
+      s.copy(schema = s.schema + ((db, table) -> u))
     case ColumnDeleted(db, table, columnName) =>
       val t = s.schema(db -> table)
       val u = t.copy(columns = t.columns.filterNot(_.name == columnName))
-      State(schema = s.schema + ((db, table) -> u))
+      s.copy(schema = s.schema + ((db, table) -> u))
     case ColumnUpdated(db, table, column) =>
       val t = s.schema(db -> table)
       val u = t.copy(columns = column +: t.columns.filterNot(_.name == column.name))
-      State(schema = s.schema + ((db, table) -> u))
+      s.copy(schema = s.schema + ((db, table) -> u))
   }
 }
 

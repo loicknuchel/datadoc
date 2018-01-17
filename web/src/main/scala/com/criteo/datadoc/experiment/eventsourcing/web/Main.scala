@@ -1,13 +1,12 @@
 package com.criteo.datadoc.experiment.eventsourcing.web
 
 import com.criteo.datadoc.experiment.eventsourcing.es.GlobalEventHandler
-import com.criteo.datadoc.experiment.eventsourcing.es.documentation.{DocCommandHandler, DocEventRepository}
-import com.criteo.datadoc.experiment.eventsourcing.es.schema.{SchemaCommandHandler, SchemaEventRepository, SchemaProjection}
+import com.criteo.datadoc.experiment.eventsourcing.es.impl1.documentation.{DocCommandHandler, DocEventRepository}
+import com.criteo.datadoc.experiment.eventsourcing.es.impl1.schema.{SchemaCommandHandler, SchemaEventRepository, SchemaProjection}
 
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 
-// sample: https://github.com/gregoryyoung/m-r
 class Main {
   def main(args: Array[String]): Unit = {
     val globalHandler = new GlobalEventHandler

@@ -5,10 +5,7 @@ import java.util.Date
 import com.criteo.datadoc.experiment.eventsourcing.domain.UserId
 import com.criteo.datadoc.experiment.eventsourcing.domain.schema.{ColumnName, DatabaseName, TableName}
 
-case class DocId(value: String)
-
-case class DocItem(id: DocId,
-                   target: DocItem.Target,
+case class DocItem(target: DocItem.Target,
                    kind: DocItem.Kind,
                    content: Markdown,
                    created: Date,
@@ -19,7 +16,7 @@ object DocItem {
   sealed trait Target // what is documented
   case class DatabaseTarget(db: DatabaseName) extends Target // a database
   case class TableTarget(db: DatabaseName, table: TableName) extends Target // a table
-  case class ColumnTarget(db: DatabaseName, table: TableName, column: ColumnName) extends Target // a field
+  case class ColumnTarget(db: DatabaseName, table: TableName, column: ColumnName) extends Target // a column
 
   sealed trait Kind // the kind of documentations
   case object Description extends Kind // functional description of the target

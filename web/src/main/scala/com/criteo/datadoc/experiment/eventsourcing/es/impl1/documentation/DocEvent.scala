@@ -1,4 +1,4 @@
-package com.criteo.datadoc.experiment.eventsourcing.es.documentation
+package com.criteo.datadoc.experiment.eventsourcing.es.impl1.documentation
 
 import com.criteo.datadoc.experiment.eventsourcing.es.common.Event
 

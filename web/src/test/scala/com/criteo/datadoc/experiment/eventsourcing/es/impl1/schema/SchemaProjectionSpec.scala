@@ -1,4 +1,4 @@
-package com.criteo.datadoc.experiment.eventsourcing.es.schema
+package com.criteo.datadoc.experiment.eventsourcing.es.impl1.schema
 
 import java.util.Date
 
