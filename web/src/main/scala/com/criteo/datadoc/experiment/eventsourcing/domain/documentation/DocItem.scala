@@ -2,7 +2,7 @@ package com.criteo.datadoc.experiment.eventsourcing.domain.documentation
 
 import java.util.Date
 
-import com.criteo.datadoc.experiment.eventsourcing.domain.UserId
+import com.criteo.datadoc.experiment.eventsourcing.domain.common.UserId
 import com.criteo.datadoc.experiment.eventsourcing.domain.schema.{ColumnName, DatabaseName, TableName}
 
 case class DocItem(target: DocItem.Target,

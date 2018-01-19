@@ -2,7 +2,7 @@ package com.criteo.datadoc.experiment.eventsourcing.es.impl2.table
 
 import java.util.Date
 
-import com.criteo.datadoc.experiment.eventsourcing.domain.UserId
+import com.criteo.datadoc.experiment.eventsourcing.domain.common.UserId
 import com.criteo.datadoc.experiment.eventsourcing.domain.documentation.DocItem
 import com.criteo.datadoc.experiment.eventsourcing.domain.documentation.DocItem._
 import com.criteo.datadoc.experiment.eventsourcing.es.common.EventFull

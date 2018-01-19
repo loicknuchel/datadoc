@@ -2,17 +2,18 @@ package com.criteo.datadoc.experiment.eventsourcing.es.impl3
 
 import java.util.Date
 
-import com.criteo.datadoc.experiment.eventsourcing.domain.documentation.DocItem
-import com.criteo.datadoc.experiment.eventsourcing.domain.documentation.DocItem.{ColumnTarget, DatabaseTarget, TableTarget}
+import com.criteo.datadoc.experiment.eventsourcing.domain.common.Meta
+import com.criteo.datadoc.experiment.eventsourcing.domain.documentation.DocItem._
+import com.criteo.datadoc.experiment.eventsourcing.domain.documentation.{ColumnDoc, DbDoc, TableDoc}
 import com.criteo.datadoc.experiment.eventsourcing.domain.schema._
 import com.criteo.datadoc.experiment.eventsourcing.es.common._
 import com.criteo.datadoc.experiment.eventsourcing.helpers.SeqHelpers
 
-case class State(currentVersion: Long,
-                 schema: Map[(DatabaseName, TableName), Table],
-                 dbDoc: Map[DatabaseName, Map[DocItem.Kind, DocItem]],
-                 tableDoc: Map[(DatabaseName, TableName), Map[DocItem.Kind, DocItem]],
-                 columnDoc: Map[(DatabaseName, TableName, ColumnName), Map[DocItem.Kind, DocItem]])
+case class State(currentVersion: Long = 0,
+                 schema: Map[(DatabaseName, TableName), Table] = Map(),
+                 dbDoc: Map[DatabaseName, DbDoc] = Map(),
+                 tableDoc: Map[(DatabaseName, TableName), TableDoc] = Map(),
+                 columnDoc: Map[(DatabaseName, TableName, ColumnName), ColumnDoc] = Map())
 
 /**
   * This implementation does not use CQRS, it only has one event stream and we read data from the internal state
@@ -22,7 +23,7 @@ class GlobalCommandHandler(protected val initEvents: Seq[EventFull[Event]],
 
   import GlobalCommandHandler._
 
-  private val initState: State = State(0, Map(), Map(), Map(), Map())
+  private val initState: State = State()
   private var state: State = initEvents.foldLeft(initState)(evolve)
 
   def handle(c: CommandFull[Command]): Either[Seq[CommandError], Seq[EventFull[Event]]] = {
@@ -64,10 +65,16 @@ class GlobalCommandHandler(protected val initEvents: Seq[EventFull[Event]],
       val t = s.schema(db -> table)
       val u = t.copy(columns = column +: t.columns.filterNot(_.name == column.name))
       s.copy(schema = s.schema + ((db, table) -> u))
-    case EventFull(u@DocUpdated(target, kind, _, _), _, _) => target match {
-      case DatabaseTarget(db) => s.copy(dbDoc = update(s.dbDoc, db, kind, build(u, e.created)))
-      case TableTarget(db, table) => s.copy(tableDoc = update(s.tableDoc, (db, table), kind, build(u, e.created)))
-      case ColumnTarget(db, table, column) => s.copy(columnDoc = update(s.columnDoc, (db, table, column), kind, build(u, e.created)))
+    case EventFull(u@DocUpdated(target, kind, _, _), version, created) => target match {
+      case DatabaseTarget(db) =>
+        val doc = s.dbDoc.getOrElse(db, DbDoc())
+        s.copy(dbDoc = s.dbDoc + (db -> update(doc, u, created, version)))
+      case TableTarget(db, table) =>
+        val doc = s.tableDoc.getOrElse(db -> table, TableDoc())
+        s.copy(tableDoc = s.tableDoc + ((db, table) -> update(doc, u, created, version)))
+      case ColumnTarget(db, table, column) =>
+        val doc = s.columnDoc.getOrElse((db, table, column), ColumnDoc())
+        s.copy(columnDoc = s.columnDoc + ((db, table, column) -> update(doc, u, created, version)))
     }
   }
 
@@ -86,14 +93,14 @@ class GlobalCommandHandler(protected val initEvents: Seq[EventFull[Event]],
   def getTable(db: DatabaseName, table: TableName): Option[Table] =
     state.schema.get(db -> table)
 
-  def getDoc(db: DatabaseName): Map[DocItem.Kind, DocItem] =
-    state.dbDoc.getOrElse(db, Map())
+  def getDoc(db: DatabaseName): DbDoc =
+    state.dbDoc.getOrElse(db, DbDoc())
 
-  def getTableDoc(db: DatabaseName, table: TableName): Map[DocItem.Kind, DocItem] =
-    state.tableDoc.getOrElse(db -> table, Map())
+  def getTableDoc(db: DatabaseName, table: TableName): TableDoc =
+    state.tableDoc.getOrElse(db -> table, TableDoc())
 
-  def getColumnDoc(db: DatabaseName, table: TableName, column: ColumnName): Map[DocItem.Kind, DocItem] =
-    state.columnDoc.getOrElse((db, table, column), Map())
+  def getColumnDoc(db: DatabaseName, table: TableName, column: ColumnName): ColumnDoc =
+    state.columnDoc.getOrElse((db, table, column), ColumnDoc())
 }
 
 object GlobalCommandHandler {
@@ -123,9 +130,22 @@ object GlobalCommandHandler {
   private def eq(e1: Column, e2: Column): Boolean =
     e1.name == e2.name
 
-  private def update[K](initial: Map[K, Map[DocItem.Kind, DocItem]], key: K, kind: DocItem.Kind, doc: DocItem): Map[K, Map[DocItem.Kind, DocItem]] =
-    initial + (key -> (initial.getOrElse(key, Map()) + (kind -> doc)))
+  private def update(doc: DbDoc, e: DocUpdated, created: Date, version: Long): DbDoc = e.kind match {
+    case Description => doc.copy(description = Some(Meta(e.content, e.source, created, version, doc.description)))
+    case _ => doc
+  }
 
-  private def build(u: DocUpdated, created: Date): DocItem =
-    DocItem(u.target, u.kind, u.content, created, u.source)
+  private def update(doc: TableDoc, e: DocUpdated, created: Date, version: Long): TableDoc = e.kind match {
+    case Description => doc.copy(description = Some(Meta(e.content, e.source, created, version, doc.description)))
+    case Usage => doc.copy(usage = Some(Meta(e.content, e.source, created, version, doc.usage)))
+    case _ => doc
+  }
+
+  private def update(doc: ColumnDoc, e: DocUpdated, created: Date, version: Long): ColumnDoc = e.kind match {
+    case Values => doc.copy(possibleValues = Some(Meta(e.content, e.source, created, version, doc.possibleValues)))
+    case Description => doc.copy(description = Some(Meta(e.content, e.source, created, version, doc.description)))
+    case Technical => doc.copy(technical = Some(Meta(e.content, e.source, created, version, doc.technical)))
+    case Usage => doc.copy(usage = Some(Meta(e.content, e.source, created, version, doc.usage)))
+    case _ => doc
+  }
 }

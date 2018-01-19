@@ -2,15 +2,16 @@ package com.criteo.datadoc.experiment.eventsourcing.es.impl3
 
 import java.util.Date
 
-import com.criteo.datadoc.experiment.eventsourcing.domain.UserId
-import com.criteo.datadoc.experiment.eventsourcing.domain.documentation.DocItem
+import com.criteo.datadoc.experiment.eventsourcing.domain.common.{Meta, UserId}
 import com.criteo.datadoc.experiment.eventsourcing.domain.documentation.DocItem._
+import com.criteo.datadoc.experiment.eventsourcing.domain.documentation.TableDoc
 import com.criteo.datadoc.experiment.eventsourcing.domain.schema.{Column, Table}
 import com.criteo.datadoc.experiment.eventsourcing.es.common.{Command, CommandFull, Event, EventFull}
 import org.scalatest.{FunSpec, Matchers}
 
 class GlobalCommandHandlerSpec extends FunSpec with Matchers {
   val now = new Date()
+
   def globalCommandHandlerAssert(given: Seq[Event], when: Command, expect: Seq[Event], asserts: GlobalCommandHandler => Unit = _ => ()): Unit = {
     val commandHandler = new GlobalCommandHandler(given.zipWithIndex.map { case (e, i) => EventFull(e, i, now) }, Seq())
     commandHandler.handle(CommandFull(when, now)) match {
@@ -76,12 +77,9 @@ class GlobalCommandHandlerSpec extends FunSpec with Matchers {
             TableCreated("db", "t3", Seq(Column("c1", "typ", 1)))),
           asserts = s => {
             s.getTables("db").length shouldBe 2
-            s.getTableDoc("db", "t2") shouldBe Map(Description -> DocItem(TableTarget("db", "t2"), Description, "doc", now, UserSource(UserId(""))))
+            s.getTableDoc("db", "t2") shouldBe TableDoc(description = Some(Meta("doc", UserSource(UserId("")), now, 2, Seq())))
           })
       }
-    }
-    describe("state") {
-
     }
   }
 }
