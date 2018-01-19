@@ -1,6 +1,6 @@
 package com.criteo.datadoc.experiment.eventsourcing.services
 
-import com.criteo.datadoc.experiment.eventsourcing.domain.AggregateId
+import com.criteo.datadoc.experiment.eventsourcing.domain.common.AggregateId
 import com.criteo.datadoc.experiment.eventsourcing.es.common.{Event, EventFull}
 
 import scala.collection.mutable
